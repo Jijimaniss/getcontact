@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Get Contact </title>
+    <!-- bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <!--google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!--chartjs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--style.css-->
+    <link rel="stylesheet" href="style.css"/>
+
+  </head>
+  <body>
+
+    <!--header-->
+    <div class="container my-4">
+       <div class="title"> Get Contact </div>
+    </div>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container  ">
+          <img src="img/logo.jpg" alt="GC Logo" width="40px"></img>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="findcontact.html">Find Contact</a>
+              </li>
+              <li class="nav-item">
+              <li class="nav-item">
+                <a class="nav-link" href="newuser.html">New User</a>
+              </li>
+                <a class="nav-link" href="department.html">Department</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+              </li>
+            </ul>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkModeToggle" />
+                <label class="form-check-label" for="darkModeToggle" id="themeLabel">Dark  Mode</label>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <!-- content -->
+     <div class="container">
+      <div class="row my-4">
+        <div class="col-md-3">
+          <div class="form-floating mb-3">
+            <input type="Department" class="form-control bg-body-tertiary" id="floatingDeparment" placeholder="Department">
+            <label for="floatingDepartment">Name</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select bg-body-tertiary" id="floatingSelect" aria-label="Floating label select example">
+              <option selected>Department</option>
+              <option value="1">Marketing</option>
+              <option value="2">Human Resources</option>
+              <option value="3">Logistics</option>
+              <option value="3">Operations</option>
+            </select>
+            <label for="floatingSelect">Select Department</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-floating mb-3">
+            <input type="Project" class="form-control bg-body-tertiary" id="floatingProject" placeholder="Project">
+            <label for="floatingProject">Project</label>
+          </div>
+        </div>
+      </div>
+     </div>
+
+     <div class="container-fluid bg-body-tertiary">
+        <div class="container">
+          <div class="row py-5">
+            <div class="col-md-2 text-center">
+              <img src="img/logosvt.png" alt="GetContact" width="150px"></img>
+            </div>
+            <div class="col-md-10">
+              <h3>Welcome! Find Your Team's Contacts Here!</h3>
+              <h6>All Your Work Contacts, All in One Spot!</h6>
+              <p>Welcome! We’ve Made Finding and Connecting with Your Colleagues and Team Members Easier Than Ever! With our streamlined platform, you can quickly access contact details, foster stronger communication, and build better collaboration across your workplace. Whether it’s for sharing ideas, planning projects, or simply staying in touch, everything you need is now at your fingertips!</p>
+              <span class="badge text-bg-warning py-2 px-2"><i class="fa-solid fa-check"></i> 150 Department</span>
+              <span class="badge text-bg-success py-2 px-2"><i class="fa-regular fa-star"></i> 3500 Completed</span>
+              <span class="badge text-bg-danger py-2 px-2"><i class="fa-solid fa-triangle-exclamation"></i> 657 Not Completed</span>
+            </div>
+          </div>
+        </div>
+     </div>
+
+     <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow bg-body-tertiary border-0">
+            <div class="card-body">
+              <div>
+                <canvas id="chart1"></canvas>
+                <script>
+                  const chart1 = document.getElementById('chart1');
+
+                  new Chart(chart1, {
+                    type: 'bar',
+                    data: {
+                      labels: ['Marketing', 'Human Resources', 'Logistics', 'Operations'],
+                      datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow bg-body-tertiary border-0">
+            <div class="card-body">
+              <canvas id="chart2"></canvas>
+                <script>
+                  const chart2 = document.getElementById('chart2');
+                
+                  new Chart(chart2, {
+                    type: 'line',
+                    data: {
+                      labels: ['Marketing', 'Human Resources', 'Logistics', 'Operations'],
+                      datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
+          </div>
+         </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow bg-body-tertiary border-0">
+            <div class="card-body">
+              <canvas id="chart3"></canvas>
+                <script>
+                  const chart3 = document.getElementById('chart3');
+                
+                  new Chart(chart3, {
+                    type: 'line',
+                    data: {
+                      labels: ['Marketing', 'Human Resources', 'Logistics', 'Operations'],
+                      datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1,
+                        stepped: true,
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
+          </div>
+         </div>
+        </div>
+      </div>
+     </div>
+
+     <div class="container my-3">
+      <h3><i class="fa-regular fa-folder"></i> Research Data</h3>
+
+     <div class="row my-3">
+      <div class="col-md-4 mb-4">
+        <div class="card bg-body-tertiary border-0 shadow">
+          <div class="card-body justify">
+            <h6 class="my-3"><i class="fa-regular fa-folder-open"></i> Marketing </h6>
+            <p>The Marketing Department is responsible for creating and executing strategies to promote the company’s products or services, build brand awareness, and engage customers through various channels like advertising, social media, and content creation. </p>
+            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar bg-success" style="width: 25%">25%</div>
+            </div>
+
+            <div class="text-end mt-3">
+              <button type="button" class="btn btn-primary btn-sm"><i class="fa-regular fa-folder-open"></i></button>
+              <button type="button" class="btn btn-warning btn-sm"><i class="fa-solid fa-triangle-exclamation"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+          <div class="col-md-4">
+            <div class="card bg-body-tertiary border-0 shadow">
+              <div class="card-body justify">
+                <h6 class="my-3"><i class="fa-regular fa-folder-open"></i> Human Resources</h6>
+                <p>The Human Resources (HR) Department focuses on recruiting, training, and retaining talent, managing employee relations, ensuring compliance with labor laws, and overseeing compensation and benefits of HR department.</p>
+                <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+                </div>
+    
+                <div class="text-end mt-3">
+                  <button type="button" class="btn btn-primary btn-sm"><i class="fa-regular fa-folder-open"></i></button>
+                  <button type="button" class="btn btn-warning btn-sm"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card bg-body-tertiary border-0 shadow">
+              <div class="card-body justify">
+                <h6 class="my-3"><i class="fa-regular fa-folder-open"></i> Logistics</h6>
+                <p>The Logistics Department handles the planning, coordination, and management of the supply chain, including inventory control and order fulfillment, ensuring products are delivered  on time by optimizing routes and managing supplier relationships.</p>
+                <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+                </div>
+    
+                <div class="text-end mt-3">
+                  <button type="button" class="btn btn-primary btn-sm"><i class="fa-regular fa-folder-open"></i></button>
+                  <button type="button" class="btn btn-warning btn-sm"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+         
+            <div class="col-md-4">
+              <div class="card bg-body-tertiary border-0 shadow">
+                <div class="card-body justify">
+                  <h6 class="my-3"><i class="fa-regular fa-folder-open"></i> Operations</h6>
+                  <p>The Operations Department oversees the daily activities that keep the business running smoothly, optimizing production processes, managing resources, and ensuring the efficient delivery of products and services.</p>
+                  <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-success" style="width: 25%">25%</div>
+                  </div>
+      
+                  <div class="text-end mt-3">
+                    <button type="button" class="btn btn-primary btn-sm"><i class="fa-regular fa-folder-open"></i></button>
+                    <button type="button" class="btn btn-warning btn-sm"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div class="footerContainer">
+      <div class="socialIcons">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-square-whatsapp"></i></a>
+        <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-square-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-youtube"></i></a>
+      </div>
+
+      <div class="footerNav">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Find Contact</a></li>
+          <li><a href="">Department</a></li>
+          <li><a href="">New User</a></li>
+          <li><a href="">Contact Us</a></li>
+          <li><a href="">About US</a></li>
+        </ul>
+      </div>
+
+      <div class="footerBottom">
+        <p>Copyright &copy;2024 GetContact. All rights reserved. Designed by <span class="designer">Jijimanis</span></p>
+      </div>
+      </div>
+    </footer>
+
+    <!-- bootstrap js CDN -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- darkmode script -->
+     <script>
+        function setTheme(theme){
+            document.documentElement.setAttribute("data-bs-theme", theme);
+            localStorage.setItem("theme",theme);
+            document.getElementById("themeLabel").innerText =theme === "dark" ? "Dark Mode On" : "Dark Mode Off";
+        }
+
+        document
+            .getElementById("darkModeToggle")
+            .addEventListener("change", function (event) {
+                if (event.target.checked){
+                    setTheme("dark");
+            } else {
+                setTheme("");
+            }
+        });
+
+        window.onload = function() {
+            let savedTheme = localStorage.getItem("theme");
+            if(savedTheme) {
+                setTheme(savedTheme);
+                if (savedTheme === "dark"){
+                    document.getElementById("darkModeToggle").checked = true;
+                    }
+                 }
+            }
+    </script>
+    </body>
+    </html>

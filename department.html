@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find Contact</title>
+    <!-- bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <!--google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!--chartjs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--style.css-->
+    <link rel="stylesheet" href="style.css"/>
+
+  </head>
+  <body>
+
+    <!--header-->
+    <div class="container my-4">
+       <div class="title"> Get Contact </div>
+    </div>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container  ">
+          <img src="img/logo.jpg" alt="GC Logo" width="50px"></img>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="findcontact.html">Find Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="department.html">Department</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="newuser.html">New User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+              </li>
+            </ul>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkModeToggle" />
+                <label class="form-check-label" for="darkModeToggle" id="themeLabel">Dark  Mode</label>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!--Department-->
+
+      <div class="container mt-4">
+        <h1 class="text-center mb-4">Department Content</h1>
+
+        <!-- Register Department Button -->
+        <div class="mb-3 text-end">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register Department</button>
+        </div>
+
+        <!-- Department Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Modified</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Row -->
+                    <tr id="dept-1">
+                        <td>1</td>
+                        <td>Human Resources</td>
+                        <td>Active</td>
+                        <td>10/01/2024</td>
+                        <td>10/05/2024</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateEditModal(1, 'Human Resources', 'Active')">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteDepartment('dept-1')">Delete</button>
+                        </td>
+                    </tr>
+
+                    <tr id="dept-1">
+                        <td>2</td>
+                        <td>Logistics</td>
+                        <td>Active</td>
+                        <td>10/01/2024</td>
+                        <td>10/05/2024</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateEditModal(1, 'Human Resources', 'Active')">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteDepartment('dept-1')">Delete</button>
+                        </td>
+                    </tr>
+
+                    <tr id="dept-1">
+                        <td>3</td>
+                        <td>Marketing</td>
+                        <td>Active</td>
+                        <td>10/01/2024</td>
+                        <td>10/05/2024</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateEditModal(1, 'Human Resources', 'Active')">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteDepartment('dept-1')">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+
+        <!-- Pagination -->
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="deptName" class="form-label">Department Name</label>
+                            <input type="text" class="form-control" id="deptName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deptStatus" class="form-label">Status</label>
+                            <select class="form-select" id="deptStatus">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editDeptId">
+                        <div class="mb-3">
+                            <label for="editDeptName" class="form-label">Department Name</label>
+                            <input type="text" class="form-control" id="editDeptName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDeptStatus" class="form-label">Status</label>
+                            <select class="form-select" id="editDeptStatus">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Populate edit modal with data
+        function populateEditModal(id, name, status) {
+            document.getElementById('editDeptId').value = id;
+            document.getElementById('editDeptName').value = name;
+            document.getElementById('editDeptStatus').value = status;
+        }
+
+        // Delete department
+        function deleteDepartment(rowId) {
+            document.getElementById(rowId).remove();
+        }
+
+        // Register new department (simulation)
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Department registered!');
+        });
+
+        // Save edited department (simulation)
+        document.getElementById('editForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Changes saved!');
+        });
+    </script>
+
+ <!-- footer -->
+ <footer>
+  <div class="footerContainer">
+  <div class="socialIcons">
+    <a href=""><i class="fa-brands fa-facebook"></i></a>
+    <a href=""><i class="fa-brands fa-square-whatsapp"></i></a>
+    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+    <a href=""><i class="fa-brands fa-square-twitter"></i></a>
+    <a href=""><i class="fa-brands fa-youtube"></i></a>
+  </div>
+
+  <div class="footerNav">
+    <ul>
+      <li><a href="">Home</a></li>
+      <li><a href="">Find Contact</a></li>
+      <li><a href="">Department</a></li>
+      <li><a href="">New User</a></li>
+      <li><a href="">Contact Us</a></li>
+      <li><a href="">About US</a></li>
+    </ul>
+  </div>
+
+  <div class="footerBottom">
+    <p>Copyright &copy;2024 GetContact. All rights reserved. Designed by <span class="designer">Jijimanis</span></p>
+  </div>
+  </div>
+</footer>
+
+
+  <!-- bootstrap js CDN -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- darkmode script -->
+  <script>
+    function setTheme(theme){
+        document.documentElement.setAttribute("data-bs-theme", theme);
+        localStorage.setItem("theme",theme);
+        document.getElementById("themeLabel").innerText =theme === "dark" ? "Dark Mode On" : "Dark Mode Off";
+    }
+
+    document
+        .getElementById("darkModeToggle")
+        .addEventListener("change", function (event) {
+            if (event.target.checked){
+                setTheme("dark");
+        } else {
+            setTheme("");
+        }
+    });
+
+    window.onload = function() {
+        let savedTheme = localStorage.getItem("theme");
+        if(savedTheme) {
+            setTheme(savedTheme);
+            if (savedTheme === "dark"){
+                document.getElementById("darkModeToggle").checked = true;
+                }
+             }
+        }
+</script>
+</body>
+</html>
